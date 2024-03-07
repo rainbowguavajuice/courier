@@ -1,0 +1,1 @@
+<p>you are at the room in the north (<<game.current_passage_index>>).</p><p>you can <<go south|forest__south>> or <<stay|forest__north>>, or <<scream|{{game.scream_counter += 1; alert('AAAA');}}>>. <<(game.scream_counter > 0 ? 'times you have screamed: <<game.scream_counter>>.' : '')>></p>

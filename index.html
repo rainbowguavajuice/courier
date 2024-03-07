@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="icon" href="data:," />
+    <style>
+      .clickable {
+	  color: red;
+	  cursor: pointer;
+      }
+      .clickable:hover {
+	  color:black;
+      }
+    </style>
+    <script src="script.js"></script>
+    <script>      
+      function go_to(game, passage_index) {
+	  game.current_passage_index = passage_index;
+      }
+
+      function render_passage(game, dom_parent, raw, e_list, h_list) {
+	  dom_parent.innerHTML = raw;
+	  let n = e_list.length;
+	  for (let i = n-1; i >= 0; --i) {
+	      let span = document.getElementById('w_'+i);
+	      if (span !== null) {
+		  span.innerHTML = e_list[i](game);
+		  if (h_list[i] !== null) {
+		      span.addEventListener("click", h_list[i](game));
+		      span.classList.add("clickable");
+		  }
+	      }
+	  }
+      }
+      
+      const game = {
+	  scream_counter: 0,
+	  current_passage_index: 0,
+	  passage_list: passage_list
+      };
+
+      function render(game) {
+	  game.passage_list[game.current_passage_index](game, document.body);
+      }
+      // render on event
+
+      document.addEventListener("DOMContentLoaded", (ev) => {
+	  render(game);
+      });
+      document.addEventListener("click", (ev) => {
+	  render(game);
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
