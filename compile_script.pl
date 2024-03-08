@@ -30,6 +30,12 @@ my $QR_CODE_DELIM_R = qr/\}\}/;
 
 my @script_files = ();
 
+sub to_single_line {
+    my ($s) = @_;
+    $s =~ s/\n/\\n/g;
+    $s;
+}
+
 # convert full path of script file to function name
 sub path_to_label {
     my ($f) = @_;
@@ -137,7 +143,7 @@ process_widget $1, \@widget_elements, \@widget_handlers/sge) {};
     print $fh "function $label (game, dom_parent) {\n";
     print $fh "let e_list = [\n" . (join ",\n", @widget_elements) . "\n];\n";
     print $fh "let h_list = [\n" . (join ",\n", @widget_handlers) . "\n];\n";
-    print $fh "let raw = '$raw\';\n";
+    print $fh "let raw = '" . (to_single_line $raw) . "';\n";
     print $fh "render_passage(game, dom_parent, raw, e_list, h_list);\n";
     print $fh "}\n\n";
 }

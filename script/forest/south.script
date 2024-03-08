@@ -1,1 +1,7 @@
-<p>you are at the room in the south (<<game.current_passage_index>>).</p></p>you can <<go north|forest__north>> or <<stay|forest__south>>. you can also <<leave the forst|main>>.</p>
+<p>
+you are at the room in the south (<<game.current_passage_index>>).
+</p>
+
+</p>
+you can <<go north|forest__north>> or <<stay|forest__south>>. you can also <<leave the forst|main>>.
+</p>
