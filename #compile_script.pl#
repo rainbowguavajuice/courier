@@ -30,6 +30,10 @@ my $QR_CODE_DELIM_R = qr/\}\}/;
 
 my @script_files = ();
 
+sub to_inline_string {
+
+}
+
 # convert full path of script file to function name
 sub path_to_label {
     my ($f) = @_;
